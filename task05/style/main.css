@@ -1,0 +1,153 @@
+#wrapper {
+    background-color: gainsboro;
+    min-width: 800px;
+}
+
+p, h2, h3, li,form{
+    line-height: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+#content{
+    overflow: hidden;
+}
+
+p.articalInfo {
+    font-size: 0.8em;
+    color: #666;
+}
+
+#nav {
+    background-color: #333;
+    height: 3.5em;
+    position: relative;
+}
+
+#nav img {
+    position: absolute;
+    top: 50%;
+    display: block;
+    max-height: 2em;
+    margin-top: -1em;
+    margin-left: 10px;
+}
+
+#nav ul {
+    float: right;
+    margin-right: 20px;
+    list-style-type: square;
+}
+
+#nav ul li {
+    /*display: block;*/
+    line-height: 3.4em;
+    float: left;
+    margin-right: 40px;
+}
+
+#nav a {
+    font-size: 0.3em;
+    color: white;
+    text-decoration: none;
+}
+
+#part1, #part2, #part3, #part4, #sidebar {
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px #444;
+    margin: 20px 20px 20px 20px;
+    padding: 40px;
+}
+
+#part2 ul {
+    list-style: none;
+}
+
+#part3 .gallary {
+    border: 1px solid;
+    float: left;
+    margin: 10px;
+    overflow: hidden;
+}
+
+#part3 p {
+    text-align: center;
+    margin: 10px;
+}
+
+#part3 img {
+    display: block;
+    margin: 10px;
+    max-height: 80px;
+}
+
+#part4 table{
+    width: 100%;
+
+}
+#part4 table th{
+    background-color: #333333;
+    color: white;
+    font-weight: bold;
+}
+
+#part4 table tr{
+    font-size: 1em;
+    line-height:1.5em;
+}
+
+#part4 table tr:last-child{
+    background-color: gainsboro;
+}
+
+#sidebar{
+    float: right;
+    width: 300px;
+    margin-left: 0px;
+    margin-right: 20px;
+}
+
+#sidebar form{
+    margin:0 auto;
+}
+
+#sidebar table{
+    font-size: 0.6em;
+    table-layout: fixed;
+}
+
+#sidebar td{
+    white-space: nowrap;
+}
+
+#sidebar tr td:first-child{
+    text-align: right;
+    padding-right: 10px;
+}
+
+#sidebar tr td:nth-child(2){
+    text-align: left;
+}
+
+#sidebar .description{
+    color: #666666;
+}
+
+#sidebar input[type=submit] {
+    margin: 0 auto;
+    display: block;
+    height: 50px;
+    width: 200px;
+    color: white;
+    background-color: cornflowerblue;
+    margin-top: 20px;
+    border-radius: 5px;
+}

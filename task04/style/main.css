@@ -1,0 +1,36 @@
+body{
+    /*position: relative;*/
+}
+
+#main{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+    width: 400px;
+    height: 200px;
+    background-color: #ccc;
+}
+
+#lt, #rb{
+    height: 50px;
+    width: 50px;
+    background-color: #fc0;
+}
+
+#lt{
+    position: absolute;
+    border-bottom-right-radius: 50px;
+    top: 0;
+    left: 0;
+}
+
+#rb{
+    position: absolute;
+    border-top-left-radius: 50px;
+    right: 0;
+    bottom: 0;
+}
+
+
