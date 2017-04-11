@@ -27,7 +27,7 @@ function addAqiData() {
 function checkValidity(name, value) {
   var name = name.trim();
   var value = value.trim();
-  var bNameValid = /^[\u4e00-\u9fa5a-zA-Z]+$/.test(name);
+  var bNameValid = /^[\u4e00-\u9fa5a-zA-Z\s]+$/.test(name);
   var bValueValid = /^\d+$/.test(value);
   return {
     nameValidity: bNameValid,
