@@ -55,27 +55,65 @@ var pageState = {
 /**
  * 渲染图表
  */
-function randomColor() {
-  return '#' + Math.floor(Math.random() * 0xffffff).toString(16);
-}
+
+//随机色
+// function randomColor() {
+//   return '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+// }
+
+var randomColors = ['#16324a', '#24385e', '#393f65', '#4e4a67', '#5a4563', '#b38e95',
+  '#edae9e', '#c1b9c2', '#bec3cb', '#9ea7bb', '#99b4ce', '#d7f0f8'
+];
+
 
 function renderChart() {
-  console.log(pageState.nowGraTime)
+  // console.log(pageState.nowGraTime)
   // console.log(pageState.nowSelectCity)
-  var attr = pageState.nowGraTime + "Data";
-  var heights = chartData[pageState.nowSelectCity][attr];
+  var dateAttr = pageState.nowGraTime + "Data";
+  var heights = chartData[pageState.nowSelectCity][dateAttr];
   // console.log(heights);
   //
   var wrapEle = document.getElementsByClassName("aqi-chart-wrap")[0];
   var wrapWidth = parseInt(window.getComputedStyle(wrapEle).width);
   // console.log(wrapWidth);
-  var divWidth = Math.floor(wrapWidth / heights.length);
-  var fragmentHTML2 = "";
+  var divWidth = wrapWidth / heights.length;
+  var fragmentDocu = document.createDocumentFragment();
   for (var i = 0; i < heights.length; i++) {
-    var tempHTML = "<div style=\"height:" + heights[i] + "px;width:" + divWidth + "px;background-color:" + randomColor() + ";\"></div>"
-    fragmentHTML2 += tempHTML;
+    var tempDiv = document.createElement("div");
+    tempDiv.style.height = heights[i] + "px";
+    tempDiv.style.backgroundColor = randomColors[Math.ceil(Math.random() * 11)];
+    tempDiv.style.width = divWidth + "px";
+    animation(tempDiv, heights[i]);
+    //set mouseover and out
+    tempDiv.data = aqiSourceData[pageState.nowSelectCity][dateAttr]
+    tempDiv.onmouseover = showHint;
+    tempDiv.onmouseout = hideHint;
+    fragmentDocu.appendChild(tempDiv);
   }
-  wrapEle.innerHTML = fragmentHTML2;
+  wrapEle.innerHTML = "";
+  wrapEle.appendChild(fragmentDocu);
+}
+
+function showHint(event) {
+  // var document.createElement = 
+}
+
+function hideHint(event) {
+
+}
+
+
+
+
+function animation(ele, targetHeight) {
+  // var targetHeight = parseInt(ele.style.height);
+  ele.style.height = "0";
+  var timer = setInterval(function (target) {
+    var speed = Math.ceil((target - parseInt(window.getComputedStyle(ele).height)) / 10);
+    // console.log(speed);
+    ele.style.height = parseInt(window.getComputedStyle(ele).height) + speed;
+    parseInt(window.getComputedStyle(ele).height) >= target && clearInterval(timer);
+  }, 20, targetHeight);
 }
 
 /**
@@ -149,10 +187,11 @@ function initAqiChartData() {
   for (var key in aqiSourceData) {
     chartData[key] = {};
     var currCityDate = initDate(aqiSourceData[key]);
+    var currCityHeight = {};
     for (key2 in currCityDate) {
-      currCityDate[key2] = qualityToHeight(currCityDate[key2]);
+      currCityHeight[key2] = qualityToHeight(currCityDate[key2]);
     }
-    chartData[key] = currCityDate;
+    chartData[key] = currCityHeight;
   }
 
   // console.log(chartData);
@@ -160,21 +199,37 @@ function initAqiChartData() {
 
 //
 function initDate(currCityDate) {
+  console.log(currCityDate);
   var dayData = [];
   var weekDate = [];
   var monthData = [];
   var weekIndex = 0;
+  var currWeekDays = 0;
+  var currMonthDays = 0;
   for (var key in currCityDate) {
     var value = currCityDate[key];
     var currDate = new Date(key.replace(/-/g, "/"));
     var firstDate = new Date("2016-1-1");
     var dayIndex = Math.ceil((currDate - firstDate) / (1000 * 60 * 60 * 24));
-    currDate.getDay() == 1 && weekIndex++;
+    //average week date
+    // console.log(currDate.getDay());
+    if (currDate.getDay() == 1) {
+      weekDate[weekIndex] = parseInt(weekDate[weekIndex] / currWeekDays);
+      // console.log(currWeekDays);
+      currWeekDays = 0;
+      weekIndex++;
+    }
+    currWeekDays++;
     dayData[dayIndex] = value; //push day
     weekDate[weekIndex] = !(weekDate.hasOwnProperty(weekIndex)) ? value : weekDate[weekIndex] + value; //push week
     var monthIndex = currDate.getMonth();
+    console.log(currDate.getDate())
+
     monthData[monthIndex] = !(monthData.hasOwnProperty(monthIndex)) ? value : monthData[monthIndex] + value;
+    currMonthDays++;
   }
+  // console.log(monthData);
+
   return {
     dayData: dayData,
     weekData: weekDate,
@@ -185,7 +240,7 @@ function initDate(currCityDate) {
 function qualityToHeight(currCityDate) {
   var transData = currCityDate;
   var max = Math.max.apply(Math, transData);
-  var ratio = 400 / max;
+  var ratio = 500 / max;
   transData = transData.map(function (element) {
     return Math.floor(element * ratio);
   });
