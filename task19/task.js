@@ -131,28 +131,27 @@ function generateRandomNum() {
 
 //bubble sort
 function bubbleSort(arr) {
-  var i = 0,
-    j = i + 1;
-  var timer = setInterval(run, 10);
+  var i = j = 0;
+  var timer = setInterval(run, 30);
 
   function run() {
-    if (i < arr.length) {
-      if (j < arr.length) {
-        console.log("render");
-        if (arr[j] < arr[i]) {
+    if (i < arr.length - 1) {
+      if (j < arr.length - i - 1) {
+        if (arr[j] > arr[j+1]) {
           var temp = arr[j];
-          arr[j] = arr[i];
-          arr[i] = temp;
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
           // render();
-          swapNode(i, j);
+          swapNode(j+1, j);
         }
         j++;
       } else {
         i++;
-        j = i + 1;
+        j = 0;
       }
     } else {
       clearInterval(timer);
+      console.log("finish bubble");
     }
   }
 }
