@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #wrapper div {
+    float: left;
+    height: 50px;
+    /*width: 50px;*/
+    text-align: center;
+    line-height: 50px;
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    margin: 10px 10px 0 0;
+  }
+
+  .selected{
+    color: red;
+  }
+</style>
+<script>
+  window.onload = function () {
+    var inputEle = document.getElementsByTagName("textarea")["0"];
+    var insertEle = document.getElementById("insert");
+    var searchEle = document.getElementById("search");
+    var searchInputEle = document.getElementsByTagName("input")[0];
+    var wrapperEle = document.getElementById("wrapper");
+    var data = [];
+
+
+    insertEle.onclick = function () {
+      var inputStr = inputEle.value;
+      data = inputStr.split(/[^\u4e00-\u9fa5\da-zA-Z]/).filter(function(value){
+        if(value != ""){
+          return true;
+        } else {
+          return false;
+        }
+      });
+      console.log(data);
+      render();      
+    }
+
+    
+    searchEle.onclick = function () {
+      clearSelected();
+      var query = searchInputEle.value;
+      console.log(query);
+      var newReg = RegExp(query, "g");
+      for (var i = 0; i < wrapperEle.childElementCount; i++){
+        wrapperEle.childNodes[i].innerHTML = wrapperEle.childNodes[i].innerHTML.replace(newReg, "<span class = \"selected\">" + query + "</span>");
+      }
+    }
+
+    function clearSelected(){
+      var selectedEles = wrapperEle.getElementsByClassName("selected");
+      while(selectedEles.length){
+        var currSpan = selectedEles[0];
+        var textNode = document.createTextNode(currSpan.innerHTML);
+        currSpan.parentNode.replaceChild(textNode, currSpan);
+        currSpan = null;
+      }
+      var selectedEles2 = wrapperEle.getElementsByClassName("selected");
+    }
+
+    function render() {
+      for (var i = 0; i < data.length; i++){
+        var newDivEle = document.createElement("div");
+        newDivEle.appendChild(document.createTextNode(data[i]));
+        wrapperEle.appendChild(newDivEle);
+      }
+    }
+
+
+
+
+  }
+</script>
+
+<body>
+  <textarea rows="5" cols="20" placeholder="啦啦啦" id="input"></textarea>
+  <button id="insert">插入</button>
+  <button id="search">查询</button>
+  <input type="text">
+  <div id="wrapper"></div>
+
+</body>
+
+</html>
