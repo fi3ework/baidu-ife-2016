@@ -10,9 +10,13 @@ window.onload = function () {
       commonPush.call(this, value);
       this.render();
     },
+    del: function () {
+      commonDel.call(hobby, this.innerHTML);
+      hobby.render();
+    },
     render: function () {
       hobbyWrapperEle.innerHTML = "";
-      commonRender.call(hobbyWrapperEle, this.data);
+      commonRender.call(hobbyWrapperEle, this);
     }
   };
 
@@ -23,10 +27,13 @@ window.onload = function () {
       console.log(this.data)
       this.render();
     },
-
+    del: function () {
+      commonDel.call(tag, this.innerHTML);
+      tag.render();
+    },
     render: function () {
       tagWrapperEle.innerHTML = "";
-      commonRender.call(tagWrapperEle, this.data);
+      commonRender.call(tagWrapperEle, this);
     }
   }
 
@@ -84,23 +91,22 @@ window.onload = function () {
     }
   })
 
-  //common append
-  // function appendRender(data) {
-  //   var tempEle = document.createElement("div");
-  //   tempEle.appendChild(document.createTextNode(data));
-  //   this.appendChild(tempEle);
-  // }
-
   //common render
-  function commonRender(data) {
-    console.log(this)
-    console.log(data)
+  function commonRender(obj) {
     var fragment = document.createDocumentFragment();
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < obj.data.length; i++) {
       var currEle = document.createElement("div");
-      currEle.appendChild(document.createTextNode(data[i]));
+      currEle.appendChild(document.createTextNode(obj.data[i]));
+      currEle.addEventListener("click", obj.del);
       fragment.appendChild(currEle);
     }
     this.appendChild(fragment);
+    console.log(obj.data);
   }
+  //add del
+  function commonDel(value) {
+    var index = this.data.indexOf(value);
+    this.data.splice(index, 1);
+  }
+
 }
