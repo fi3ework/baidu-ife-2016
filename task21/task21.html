@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #tagWrapper, #hobbyWrapper{
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  #hobbyWrapper div, #tagWrapper div{
+    background-color: orange;
+    height: 10px;
+    /*width: 30px;*/
+    float: left;
+    color: #fff;
+    text-align: center;
+    line-height: 10px;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+  }
+
+  #tagWrapper div{
+    background-color: skyblue;
+  }
+
+  #hobbyInput{
+    width: 200px;
+    height: 100px;
+    display: block;
+  }
+</style>
+<script src="task21.js"></script>
+
+<body>
+  <label for="tagInput"></label>
+  <input type="text" id="tagInput">
+  <div id="tagWrapper"></div>
+  <textarea id="hobbyInput"></textarea>
+  <button id="submitHobby">确认</button>
+  <div id="hobbyWrapper"></div>
+</body>
+
+</html>
