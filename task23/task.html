@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  div {
+    float: left;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+  }
+
+  .selected {
+    background-color: orange;
+  }
+
+  div.search {
+    background-color: red;
+  }
+</style>
+<script src="task.js"></script>
+
+<body>
+  <!--<div>-->
+    <div id="root">
+      Super
+      <div>
+        Cat
+        <div>
+          Apple
+          <div>Pear</div>
+          <div>Pig</div>
+          <div>Cola</div>
+          <div>Soccer</div>
+        </div>
+        <div>Phone</div>
+        <div>
+          <div>Book</div>
+          <div>School</div>
+        </div>
+      </div>
+      <div>
+        Note
+        <div>
+          Human
+          <div>Code</div>
+          <div>Operate</div>
+          <div>Man</div>
+        </div>
+        <div>
+          Program
+          <div>
+            Bement
+            <div>Cat</div>
+          </div>
+          <div>Glass</div>
+        </div>
+      </div>
+      <div>Fish</div>
+    </div>
+  <!--</div>-->
+  <button id="df">深度优先</button>
+  <button id="bf">广度优先</button>
+  <input type="text" id="query">
+  <button id="dfSearch">深度优先搜索</button>
+  <button id="bfSearch">广度优先搜索</button>
+</body>
+
+</html>

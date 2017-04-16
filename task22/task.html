@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  div{
+    background-color: white;
+  }
+
+  #root {
+    display: flex;
+    padding: 20px;
+    width: 1000px;
+    height: 300px;
+    border: 1px solid #000;
+    margin: 100px auto;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+
+  .child_1 {
+    display: flex;
+    padding: 20px;
+    width: 450px;
+    height: 260px;
+    border: 1px solid red;
+    justify-content: space-between;
+  }
+
+  .child_2 {
+    display: flex;
+    padding: 20px;
+    width: 170px;
+    height: 220px;
+    border: 1px solid green;
+    justify-content: space-between;
+  }
+
+  .child_3 {
+    display: flex;
+    padding: 20px;
+    width: 35px;
+    height: 180px;
+    border: 1px solid blue;
+    justify-content: space-between;
+  }
+
+  .selected{
+    background-color: salmon;
+  }
+
+  input {
+    margin-left: 100px;
+    width: 50px;
+    height: 40px;
+    font-size: 40px;
+  }
+</style>
+<script src="task.js"></script>
+<body>
+  <div id="root">
+    <div class="child_1">
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+    </div>
+    <div class="child_1">
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+    </div>
+  </div>
+  <button id="pre">前序</button>
+  <button id="in">中序</button>
+  <button id="post">后序</button>
+</body>
+
+</html>
