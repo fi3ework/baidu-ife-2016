@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="task.css" rel="stylesheet">
+  <script async src="task.js"></script>
+</head>
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: steelblue;
+  }
+
+  #wrapper{
+    background-color: azure;
+    /*min-width: 800px;*/
+    width: 800px;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  #root div {
+    position: relative;
+    margin-left: 20px;
+    font-size: 19px;
+    line-height: 25px;
+    max-width: 200px;
+    cursor: pointer;
+  }
+
+  #query{
+    margin: 10px;
+  }
+
+  .open{
+
+  }
+
+  .close{
+
+  }
+</style>
+
+<body>
+  <div id="wrapper">
+    <input type="text" id="query">
+    <button id="search">搜索</button>
+    <div id="root">
+
+    </div>
+  </div>
+</body>
+
+</html>
