@@ -9,25 +9,21 @@ function NodeTree(obj) {
 
 //toggle
 NodeTree.prototype.toggle = function (eve) {
-  eve.stopPropagation();
-  // console.log(this.nodeTree.childs.length)
-  // console.log(window.getComputedStyle(this.nodeTree.childs[0].selfDom).display);
-  if (!this.nodeTree.childs.length)
+  if (!eve.target.nodeTree.childs.length)
     return true;
-  if (window.getComputedStyle(this.nodeTree.childs[0].selfDom).display == "block") {
-    for (var i = 0; i < this.nodeTree.childs.length; i++) {
-      this.nodeTree.childs[i].selfDom.style.display = "none";
+  if (window.getComputedStyle(eve.target.nodeTree.childs[0].selfDom).display == "block") {
+    for (var i = 0; i < eve.target.nodeTree.childs.length; i++) {
+      eve.target.nodeTree.childs[i].selfDom.style.display = "none";
     }
   } else {
-    for (var i = 0; i < this.nodeTree.childs.length; i++) {
-      this.nodeTree. childs[i].selfDom.style.display = "block";
+    for (var i = 0; i < eve.target.nodeTree.childs.length; i++) {
+      eve.target.nodeTree. childs[i].selfDom.style.display = "block";
     }
   }
 }
 
 //render
 NodeTree.prototype.render = function () {
-  // console.log(this.toggle)
   this.selfDom.onclick = this.toggle;
 }
 
@@ -49,7 +45,7 @@ NodeTree.prototype.addChild = function (data) {
   }
   var childTree = new NodeTree(obj);
   this.childs.push(childTree);
-  childTree.render();
+  // childTree.render();
 }
 
 //demo
@@ -61,6 +57,7 @@ var root = new NodeTree({
   parentDom: null,
   nodeTree : root
 });
+root.render();
 
 root.addChild("HTML");
 root.addChild("CSS")
