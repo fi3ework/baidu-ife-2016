@@ -74,19 +74,20 @@ NodeTree.prototype.clickToAdd = function () {
 NodeTree.prototype.rename = function (eve) {
   //ui
   eve.stopPropagation();
-  var newName = "";
+  var newName;
   do {
     newName = prompt("重命名名称", "");
   }
   while (newName == "")
-
-
-  var currSelfDom = this.parentNode.parentNode;
-  for (var i = 0; i < currSelfDom.childElementCount; i++) {
-    currSelfDom.childNodes[i].nodeType == 3 && (currSelfDom.childNodes[i].nodeValue = newName);
+  if (newName) {
+    var currSelfDom = this.parentNode.parentNode;
+    for (var i = 0; i < currSelfDom.childElementCount; i++) {
+      currSelfDom.childNodes[i].nodeType == 3 && (currSelfDom.childNodes[i].nodeValue = newName);
+    }
+    //data
+    this.parentNode.parentNode.nodeTree.data = newName;
   }
-  //data
-  this.parentNode.parentNode.nodeTree.data = newName;
+
 }
 
 

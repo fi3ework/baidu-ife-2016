@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  #wrapper {
+    margin: 20px auto 0;
+    width: 400px;
+  }
+
+  div {
+    margin: 20px;
+  }
+
+  #no1 {
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 0 20px;
+    outline: none;
+    text-indent: 6px;
+  }
+
+  #no1.ok {
+    border-color: greenyellow
+  }
+
+  #no1.notok {
+    border-color: red
+  }
+
+  p{
+    margin-top: 10px;
+    color: dimgray;
+    font-size: 12px;
+  }
+
+  #btn1 {
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+  }
+</style>
+
+<body>
+  <script>
+    window.onload = function () {
+      var btn1Ele = document.getElementById("btn1");
+      var input1Ele = document.getElementById("no1");
+      var tipEle = document.getElementById("tip");
+
+      input1Ele.addEventListener("keyup", function () {
+        checkWithReg.call(this, input1Ele.value);
+      })
+
+      function checkWithReg(value) {
+        var currLength = 0;
+        for (var i = 0; i < value.length; i++) {
+          var uni = parseInt(value.charCodeAt(i));
+          console.log(uni > 0x4e00.toString(10))
+          if (uni > 0x4e00.toString(10) && uni < 0x9fa5.toString(10)) {
+            currLength += 2;
+          } else {
+            currLength++;
+          }
+        }
+        //judge
+        console.log(11)
+        if (currLength > 12) {
+          this.className = "notok";
+          tipEle.innerHTML = "too much"
+        } else {
+          this.className = "ok";
+          console.log(this)
+          tipEle.innerHTML = "ok~"
+        }
+      }
+    }
+  </script>
+
+  <div id="wrapper">
+    名称<input type="text" id="no1"><button id="btn1">验证</button>
+    <p id="tip">必填，长度为4~16个字符</p>
+  </div>
+</body>
+
+</html>
