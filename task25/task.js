@@ -53,21 +53,34 @@ NodeTree.prototype.deleteNodeTree = function (eve) {
   var index = currDelButtonItem.nodeTree.childs.indexOf(this);
   (index != -1) && currDelButtonItem.nodeTree.childs.splice(index, 1);
   console.log(currDelButtonItem.nodeTree);
-  currDelButtonItem.parentNode.remove(currDelButtonItem);
+  currDelButtonItem.parentNode.removeChild(currDelButtonItem);
   currDelButtonItem = null;
 }
 
 //click to add
 NodeTree.prototype.clickToAdd = function () {
-  var newName = prompt("新节点名称", "");
-  this.parentNode.parentNode.nodeTree.addChild(newName);
+  var newName;
+  do {
+    newName = prompt("新节点名称", "");
+  }
+  while (newName == "")
+  console.log(newName);
+  if (newName) {
+    this.parentNode.parentNode.nodeTree.addChild(newName);
+  }
 }
 
 //rename
 NodeTree.prototype.rename = function (eve) {
   //ui
   eve.stopPropagation();
-  var newName = prompt("重命名名称", "");
+  var newName = "";
+  do {
+    newName = prompt("重命名名称", "");
+  }
+  while (newName == "")
+
+
   var currSelfDom = this.parentNode.parentNode;
   for (var i = 0; i < currSelfDom.childElementCount; i++) {
     currSelfDom.childNodes[i].nodeType == 3 && (currSelfDom.childNodes[i].nodeValue = newName);
@@ -80,39 +93,40 @@ NodeTree.prototype.rename = function (eve) {
 //hover show
 NodeTree.prototype.setHoverShow = function (eve) {
   //create element
-  console.log("in")
-  // event.preventDefault()
-  // eve.stopPropagation();
-  var tipWrapper = document.createElement("div");
-  tipWrapper.className = "iconfont";
-  this.appendChild(tipWrapper);
-  var addButton = document.createElement("span");
-  var delButton = document.createElement("span");
-  var renameButton = document.createElement("span");
-  tipWrapper.appendChild(addButton);
-  tipWrapper.appendChild(delButton);
-  tipWrapper.appendChild(renameButton);
-  addButton.innerHTML = "&#xe610; 新建";
-  delButton.innerHTML = "&#xe600; 删除";
-  renameButton.innerHTML = "&#xe639; 重命名";
-  //set hover and onclick
-
-  console.log(this)
-  delButton.onclick = this.nodeTree.deleteNodeTree;
-  addButton.onclick = this.nodeTree.clickToAdd;
-  renameButton.onclick = this.nodeTree.rename;
+  if (this.getElementsByClassName("iconfont").length == 0) {
+    console.log("in")
+    var tipWrapper = document.createElement("div");
+    tipWrapper.className = "iconfont";
+    this.appendChild(tipWrapper);
+    var addButton = document.createElement("span");
+    var delButton = document.createElement("span");
+    var renameButton = document.createElement("span");
+    tipWrapper.appendChild(addButton);
+    tipWrapper.appendChild(delButton);
+    tipWrapper.appendChild(renameButton);
+    addButton.innerHTML = "&#xe610; 新建";
+    delButton.innerHTML = "&#xe600; 删除";
+    renameButton.innerHTML = "&#xe639; 重命名";
+    //set hover and onclick
+    delButton.onclick = this.nodeTree.deleteNodeTree;
+    addButton.onclick = this.nodeTree.clickToAdd;
+    renameButton.onclick = this.nodeTree.rename;
+  }
 }
+
+
 
 //hover hide
 NodeTree.prototype.setHoverHide = function (eve) {
-  // var reltEle = eve.relatedTarget;
-  // console.log(this);
-  // console.log("out")
-  // eve.stopPropagation();
-  // var tipWrapper = this.getElementsByClassName("iconfont")[0];
-  // this.removeChild(tipWrapper);
-  // tipWrapper = null;
+  eve.stopPropagation();
+  if (eve.relatedTarget.className == "iconfont" || eve.relatedTarget.parentNode.className == "iconfont") {
+    return false;
+  }
 
+  console.log("out")
+  var tipWrapper = document.getElementsByClassName("iconfont")[0];
+  tipWrapper && tipWrapper.parentNode.removeChild(tipWrapper);
+  tipWrapper = null;
 
 
 }
