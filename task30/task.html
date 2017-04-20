@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="task.js" async></script>
+</head>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+
+  form{
+    width: 700px;
+    margin: 50px auto 0;    
+  }
+
+  td{
+    padding-right: 10px;
+    padding-bottom: 8px;
+    text-align: right;
+  }
+
+  .input{
+    width: 150px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    text-indent: 3px;
+    outline: none;
+  }
+
+  .valid{
+    border-color: seagreen;
+  }
+
+  .invalid{
+    border-color: red;
+    color: red;
+  }
+
+  .hint{
+    display: none;
+    width: 290px;
+  }
+
+</style>
+<body>
+  <form id="wrapper">
+    <table>
+      <tr>
+        <td><label for="name" class>名称</label></td>
+        <td><input type="text" id="name" class="input"></td>
+        <td class="hint">必填，长度为4~16位字符</td>
+      </tr>
+      <tr>
+        <td><label for="password">密码</label></td>
+        <td><input type="password" id="password" class="input"></td>
+        <td class="hint">必填，长度为4~16位字符,包含字母和数字</td>
+      </tr>
+      <tr>
+        <td><label for="repeatPassword">确认密码</label></td>
+        <td><input type="password" id="repeatPassword" class="input"></td>
+        <td class="hint">必填，必须与密码相同</td>
+      </tr>
+      <tr>
+        <td><label for="email">邮箱</label></td>
+        <td><input type="text" id="email" class="input"></td>
+        <td class="hint">填写正确的邮箱格式</td>
+      </tr>
+      </tr>
+      <tr>
+        <td><label for="phone">电话</label></td>
+        <td><input type="text" id="phone" class="input"></td>
+        <td class="hint">必填，长度为4~16位字符</td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>
