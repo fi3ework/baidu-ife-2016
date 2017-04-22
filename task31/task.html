@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="task.js" defer></script>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  form {
+    margin: 50px auto 0;
+    width: 400px;
+  }
+
+  div {
+    margin: 20px;
+  }
+
+  input[type=radio]{
+    margin-left: 30px;
+    margin-right: 5px;
+  }
+
+  select{
+    margin: 5px;
+  }
+
+  #city {
+    width: 60px;
+  }
+
+  #school {
+    width: 150px;
+  }
+
+  #notStudentWrapper{
+    display: none;
+  }
+
+  #company{
+    margin-left: 10px;
+  }
+
+</style>
+
+<body>
+  <form>
+    <div>
+      <input type="radio" name="isStudent" id="student" checked><label for="student">在校生</label>
+      <input type="radio" name="isStudent" id="notStudent"><label for="notStudent">非在校生</label>
+
+    </div>
+    <div id="studentWrapper">
+      <label for="city">大学</label><select id="city"></select>
+      <select id="school"></select>
+    </div>
+    <div id="notStudentWrapper">
+      <label for="company">就业单位</label><input type="text" id="company">
+    </div>
+  </form>
+</body>
+
+</html>
