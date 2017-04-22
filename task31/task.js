@@ -56,23 +56,20 @@ var initSelect = {
   initSchool: function () {
     schoolSelect.innerHTML = "";
     var currCity = citySelect.value;
-    for (var i = 0; i < this.data.length; i++) {
-      if (citySelect.value == this.data[i].value) {
-        for (var j = 0; j < this.data[i].schools.length; j++) {
-          var currSchoolData = this.data[i].schools[j];
-          for (var key in currSchoolData) {
-            var currSchool = document.createElement("option");
-            currSchool.value = key;
-            currSchool.innerHTML = currSchoolData[key];
-            schoolSelect.appendChild(currSchool);
-          }
-        }
+    var selectIndex = citySelect.selectedIndex;
+    for (var j = 0; j < this.data[selectIndex].schools.length; j++) {
+      var currSchoolData = this.data[selectIndex].schools[j];
+      for (var key in currSchoolData) {
+        var currSchool = document.createElement("option");
+        currSchool.value = key;
+        currSchool.innerHTML = currSchoolData[key];
+        schoolSelect.appendChild(currSchool);
       }
     }
   }
 }
 
-citySelect.addEventListener("change", function(){
+citySelect.addEventListener("change", function () {
   initSelect.initSchool();
 })
 
@@ -81,11 +78,11 @@ initSelect.initSchool();
 
 
 studentRadio.addEventListener("change", function () {
-    studentWrapper.style.display = "block";
-    nonStudentWrapper.style.display = "none";
+  studentWrapper.style.display = "block";
+  nonStudentWrapper.style.display = "none";
 })
 
 notStudentRatio.addEventListener("change", function () {
-    studentWrapper.style.display = "none";
-    nonStudentWrapper.style.display = "block";
+  studentWrapper.style.display = "none";
+  nonStudentWrapper.style.display = "block";
 })
