@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="validator.js"></script>
+  <script src="render.js" defer></script>
+  <script src="app.js" defer></script>
+  <title>Document</title>
+</head>
+<style>
+
+  #input-1-wrapper {
+    float: left;
+    height: 500px;
+    width: 400px;
+  }
+
+  #input-1 {
+    height: 500px;
+    width: 400px;
+  }
+
+  #wrapper-1 {
+    float: right;
+    /*margin-left: 40px;*/
+    width: 300px;
+    height: 300px;
+  }
+
+  input{
+    margin-top: 5px;
+    width: 200px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    text-indent: 2px;
+    outline: none;
+  }
+
+  .form-wrapper{
+    margin: 10px;
+  }
+
+  .invalid {
+    border-color: red;
+  }
+
+  .valid {
+    border-color: green;
+  }
+
+  .form-wrapper button{
+    height: 30px;
+    width: 50px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    background-color: royalblue;
+    float: right;
+    margin-top: 10px;
+    margin-right: 40px;
+    outline: none;
+  }
+
+  label{
+    display: block;
+    /*color: red;*/
+  };
+</style>
+
+<body>
+  <p>表单一验证</p>
+  <div id="input-1-wrapper">
+    <textarea id="input-1">
+{
+    "name": {
+        "id": "name2",
+        "label": "姓名",
+        "type": "text",
+        "validators": [
+            "isNotEmpty",
+            "isValidName"
+        ],
+        "rule": "必填，长度为4~16个字符",
+        "success": "姓名格式输入正确"
+    },
+    "submit": {
+        "id": "validate2",
+        "value": "验证",
+        "type": "button",
+        "fail": "提交失败",
+        "success": "提交成功"
+    }
+}
+  </textarea>
+    <button>生成表单</button>
+  </div>
+
+  <div id="wrapper-1" class="form-wrapper">
+
+  </div>
+</body>
+
+</html>
