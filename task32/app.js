@@ -13,7 +13,7 @@ function generateForm(id) {
   var controller = new Controller();
   for (var key in model) {
       eleFactory.appendEle(model[key]);
-      validator.checkTheValidity(model[key]);
+      // validator.checkTheValidity(model[key]);
       controller.addControl(model[key]);
   }
 }

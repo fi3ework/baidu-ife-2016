@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="validator.js"></script>
   <script src="render.js" defer></script>
+  <script src="controller.js"></script>
   <script src="app.js" defer></script>
   <title>Document</title>
 </head>
 <style>
-
   #input-1-wrapper {
     float: left;
     height: 500px;
@@ -30,7 +30,7 @@
     height: 300px;
   }
 
-  input{
+  input {
     margin-top: 5px;
     width: 200px;
     height: 20px;
@@ -41,7 +41,7 @@
     outline: none;
   }
 
-  .form-wrapper{
+  .form-wrapper {
     margin: 10px;
   }
 
@@ -53,7 +53,21 @@
     border-color: green;
   }
 
-  .form-wrapper button{
+  .hint{
+    font-size: 10px;
+    display: none;
+  }
+
+  .hint-focus{
+    display: block;
+  }
+
+  .hint-valid{
+    display: block;
+    color: green;
+  }
+
+  .form-wrapper button {
     height: 30px;
     width: 50px;
     color: white;
@@ -66,10 +80,12 @@
     outline: none;
   }
 
-  label{
+  label {
     display: block;
     /*color: red;*/
-  };
+  }
+
+  ;
 </style>
 
 <body>
@@ -88,6 +104,17 @@
         "rule": "必填，长度为4~16个字符",
         "success": "姓名格式输入正确"
     },
+    "email": {
+        "id": "email2",
+        "label": "邮箱",
+        "type": "text",
+        "validators": [
+            "isNotEmpty",
+            "isValidEmail"
+        ],
+        "rule": "非必填，服从邮箱规则",
+        "success": "邮箱格式输入正确"
+    },
     "submit": {
         "id": "validate2",
         "value": "验证",
@@ -101,7 +128,6 @@
   </div>
 
   <div id="wrapper-1" class="form-wrapper">
-
   </div>
 </body>
 

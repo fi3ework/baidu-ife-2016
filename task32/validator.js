@@ -3,12 +3,13 @@ function Validator(model) {
 }
 
 Validator.prototype.types = {
+  //not empty
   isNotEmpty: {
     validate: function (value) {
       return value !== "";
     },
   },
-
+  //valid name
   isValidName: {
     validate: function (value) {
       var realLength = 0,
@@ -21,12 +22,19 @@ Validator.prototype.types = {
       }
       return realLength >= 4 && realLength <= 16;
     },
+  },
+  //valid email
+  isValidEmail: {
+    validate: function (value) {
+      return /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]/.test(value);
+    },
   }
 }
 
 Validator.prototype.addRule = function (rule, inputDom) {
+  console.log(rule)
   var func = this.types[rule].validate;
-  func(inputDom.value);
+  return func(inputDom.value);
 }
 
 Validator.prototype.checkTheValidity = function (model) {
@@ -37,8 +45,7 @@ Validator.prototype.checkTheValidity = function (model) {
   var inputDom = model.selfDom;
   var that = this;
   var result = rules.every(function (item, index, array) {
-    console.log(item)
-    that.addRule(item, inputDom);
+    return that.addRule(item, inputDom);
   });
   model.validity = result ? true : false;
 }

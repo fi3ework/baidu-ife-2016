@@ -26,12 +26,11 @@ Render.prototype.appendInput = function (model) {
   currWrapper.appendChild(textEle);
   currWrapper.appendChild(hintEle);
   this.wrapper.appendChild(currWrapper);
-  
 
   //bind
   model.selfDom = textEle;
   model.hintDom = hintEle;
-  textEle.data = model;
+  textEle.model = model;
 }
 
 Render.prototype.appendSubmit = function (model) {
@@ -40,4 +39,7 @@ Render.prototype.appendSubmit = function (model) {
   buttonEle.id = model.id;
   this.wrapper.appendChild(buttonEle);
 
+  //bind
+  model.selfDom = buttonEle;
+  buttonEle.model = model;
 }
