@@ -1,0 +1,24 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+table{
+  margin: 20px auto 0;
+  border-collapse: collapse;
+  border: none;
+  text-align: center;
+}
+
+th{
+  padding: 3px;
+  background-color: lightgray;
+  border: 1px solid lightgray;
+}
+
+td{
+  padding: 6px;
+  border: 1px solid lightgray;
+  text-align: center;
+  /*border-width:0 1px 1px 0;*/
+}
