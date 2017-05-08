@@ -67,10 +67,16 @@ Controller.prototype.freezeHead = function (table) {
         cloneHead.style.display = "table-header-group";
         //set thead css
         thead.classList.add("freezed-head");
-        thead.style.width = document.defaultView.getComputedStyle(cloneHead).getPropertyValue("width");
         thead.style.left = cloneHead.parentNode.offsetLeft + "px";
-        // thead.getElementsByTagName("th")[0].style.width = document.defaultView.getComputedStyle(cloneHead.firstChild).getPropertyValue("width");
-        console.log(thead.style.left);
+        var ths = thead.getElementsByTagName("th");
+        for(var i = 0; i < ths.length; i++){
+          ths[i].style.width = document.defaultView.getComputedStyle(cloneHead.firstChild.firstChild).getPropertyValue("width")
+        }
+
+        // thead.style.width = document.defaultView.getComputedStyle(cloneHead).getPropertyValue("width");
+        // thead.getElementsByTagName("th")[0].style.width = "102px";
+        // console.log(thead.getElementsByTagName("th")[0]);
+        // console.log(thead.style.left);
       }
     }
   })
