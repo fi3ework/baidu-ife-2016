@@ -2,6 +2,8 @@ function Render(rootNode, json) {
   this.rootNode = rootNode;
   this.head = json.head;
   this.data = json.data;
+  this.sortable = json.sortable;
+  // console.log(this.sortable)
   this.init();
 }
 
@@ -9,7 +11,7 @@ Render.prototype.init = function () {
   var frag = this.renderTable(this.rootNode);
   this.frag = frag;
   //render head
-  this.renderHead(frag, this.head);
+  this.renderHead();
   //render row
   this.renderRow();
   this.rootNode.appendChild(frag);
@@ -29,12 +31,23 @@ Render.prototype.renderTable = function (root) {
 }
 
 //render head
-Render.prototype.renderHead = function (frag, headData) {
-  var table = frag.querySelector("table");
+Render.prototype.renderHead = function () {
+  var headData = this.head;
+  var table = this.frag.querySelector("table");
   var thead = table.tHead;
   thead.insertRow(0);
+  var that = this;
   headData.forEach(function (item, index, array) {
-    thead.rows[0].appendChild(document.createElement("th")).appendChild(document.createTextNode(item));
+    var currTh = thead.rows[0].appendChild(document.createElement("th"));
+    currTh.appendChild(document.createElement("span")).appendChild(document.createTextNode(item));
+    //arrow
+    // console.log(that.sortable)
+    if(that.sortable[index]){
+      var currImg = document.createElement("img");
+      currImg.className = "sort-arrow";
+      currImg.src = "arrow.png";
+      currTh.appendChild(currImg);
+    }
   });
   // console.log(table);
 }
@@ -42,7 +55,7 @@ Render.prototype.renderHead = function (frag, headData) {
 //render row
 Render.prototype.renderRow = function () {
   //clear
-  console.log(this);
+  // console.log(this);
   // var f = this.frag;
   var table = this.frag.querySelector("table") ||this.rootNode.querySelector("table");
   // console.log(table2);
