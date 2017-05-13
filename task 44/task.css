@@ -1,0 +1,42 @@
+* {
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h2{
+  font: bold 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+#root {
+  overflow: auto;
+  margin: 0 auto;
+  width: 75%;
+}
+
+.waterfallColumn {
+  /*width: */
+  box-sizing: border-box;
+  float: left;
+  padding: 8px;
+}
+
+.waterfallBox {
+  border: 1px solid gray;
+  margin-bottom: 16px;
+}
+
+.waterfallBox img {
+  width: 100%;
+}
+
+.waterfallBox h3 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.waterfallBox p {
+  text-align: center;
+}
