@@ -1,3 +1,5 @@
+// import { Waterfall } from './waterfall';
+
 var waterfall = new Waterfall({
   boxSelector: ".waterfallBox",
   rootContainer: "root",

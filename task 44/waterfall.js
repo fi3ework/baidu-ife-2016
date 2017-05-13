@@ -70,3 +70,5 @@ Waterfall.prototype.getMinHeightCol = function () {
     }
     return minIndex;
 }
+
+// export { Waterfall };
