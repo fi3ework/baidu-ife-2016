@@ -48,7 +48,7 @@ Waterfall.prototype.initColumn = function (colNum) {
  * append box to column
  */
 Waterfall.prototype.appendBox = function (box) {
-    console.log(box)
+    // console.log(box)
     let currMinHeightColIndex = this.getMinHeightCol();
     this.columns[currMinHeightColIndex].appendChild(box);
     return box;
